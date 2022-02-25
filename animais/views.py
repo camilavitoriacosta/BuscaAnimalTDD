@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from animais.models import Animal
 
 def index(requisicao):
-    return render(requisicao, 'index.html')
+    context = {'caracteristicas': Animal.objects.all()}
+    return render(requisicao, 'index.html', context)
