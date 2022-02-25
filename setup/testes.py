@@ -1,12 +1,19 @@
 from django.test import LiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from animais.models import Animal
 
 class AnimaisTestCase(LiveServerTestCase):
     ## etapas para ser executadas antes de iniciar os testes
     def setUp(self):
         # configurar para utilizar o Google como navegador principal
         self.browser = webdriver.Chrome(r'C:\Users\vivim\Desktop\Projetos\TDD_buscaAnimal\chromedriver.exe')
+        self.animal = Animal.objects.create(
+            nome_animal = 'Leão',
+            predador = 'Sim',
+            venenoso = 'Não',
+            domestico = 'Não'
+        )
 
     ## etapas que ocorrem após todos os testes
     def tearDown(self):
